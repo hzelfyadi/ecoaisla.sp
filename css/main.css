@@ -1,0 +1,179 @@
+/* ==========================================================================
+   #MAIN STYLESHEET
+   ========================================================================== */
+
+/**
+ * 1. Import Google Fonts
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/**
+ * 2. Import Font Awesome for icons
+ */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/**
+ * 3. Import Tailwind CSS (optional, if needed)
+ */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+/**
+ * 4. Import variables and design tokens
+ */
+@import 'variables.css';
+
+/**
+ * 5. Import base styles and resets
+ */
+@import 'base.css';
+
+/**
+ * 6. Import utility classes
+ */
+@import 'utilities.css';
+
+/**
+ * 7. Import animations and transitions
+ */
+@import 'animations.css';
+
+/**
+ * 8. Import component styles
+ */
+@import 'components.css';
+@import 'components/_back-to-top.css';
+@import 'components/_toast.css';
+@import 'components/_form-validation.css';
+@import 'components/_pwa.css';
+@import 'components/_accessibility.css';
+@import '_process-image-enhanced.css';
+@import '_hero-background.css';
+
+/**
+ * 9. Import enhanced section styles
+ */
+@import 'header-enhanced.css';
+@import 'hero-enhanced.css';
+@import 'how-it-works-enhanced.css';
+@import 'benefits-enhanced.css';
+@import 'eligibility-enhanced.css';
+@import 'footer-enhanced.css';
+@import 'compact-form-enhanced.css';
+@import '_no-hero-background.css';
+
+/**
+ * 10. Import print styles (optional)
+ */
+/* @import 'print.css' print; */
+
+/**
+ * 11. Dark mode overrides (if not using CSS variables)
+ */
+/* @import 'dark-mode.css' (prefers-color-scheme: dark); */
+
+/**
+ * 12. Print styles (alternative approach)
+ */
+@media print {
+  /* Print styles here */
+}
+
+/**
+ * 13. Debug styles (development only)
+ */
+/* @import 'debug.css'; */
+
+/**
+ * 14. Custom scrollbar (optional)
+ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/**
+ * 15. Selection styles
+ */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+  text-shadow: none;
+}
+
+/**
+ * 16. Focus styles for better accessibility
+ */
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/**
+ * 17. Print styles
+ */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+}

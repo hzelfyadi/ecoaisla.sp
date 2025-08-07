@@ -1,0 +1,72 @@
+/* ==========================================================================
+   #REMOVE HERO BACKGROUNDS
+   ========================================================================== */
+
+/* Remove all backgrounds from the hero section */
+#inicio.new-hero,
+#inicio .hero-background,
+#inicio .hero-overlay,
+#inicio .hero-bg-elements {
+    background: none !important;
+    background-image: none !important;
+}
+
+/* Remove any background animations */
+#inicio .hero-background,
+#inicio .hero-overlay {
+    animation: none !important;
+}
+
+/* Ensure background elements are hidden */
+#inicio .hero-background,
+#inicio .hero-overlay,
+#inicio .bg-circle,
+#inicio .bg-pattern {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0) !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+/* Reset hero section to default background */
+#inicio.new-hero {
+    background-color: #ffffff !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ensure content remains visible */
+#inicio .new-hero-container,
+#inicio .new-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Remove any box shadows or overlays that might be affecting visibility */
+#inicio * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Ensure text remains readable */
+#inicio .new-hero-title,
+#inicio .new-hero-subtitle,
+#inicio .new-hero-badge,
+#inicio .new-hero-feature {
+    color: #333333 !important;
+    text-shadow: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #inicio.new-hero {
+        padding: 2rem 0 !important;
+    }
+}

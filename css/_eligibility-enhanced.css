@@ -1,0 +1,173 @@
+/* ==========================================================================
+   #ELIGIBILITY ENHANCED STYLES
+   ========================================================================== */
+
+.eligibility-section {
+  padding: 6rem 0;
+  background-color: var(--color-bg);
+}
+
+.eligibility-container {
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.eligibility-content {
+  position: relative;
+}
+
+.eligibility-badge {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  color: white;
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
+}
+
+.eligibility-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-extrabold);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+.eligibility-description {
+  color: var(--color-text-light);
+  margin: 0 0 2.5rem 0;
+  line-height: 1.7;
+}
+
+/* Form Container */
+.eligibility-form-container {
+  background: white;
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  padding: 2.5rem;
+  border: 1px solid var(--color-border);
+}
+
+/* Form Progress */
+.form-progress {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-semibold);
+  margin-bottom: 0.75rem;
+  transition: all var(--transition);
+}
+
+.progress-step.active .step-number {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.step-label {
+  font-size: 0.8rem;
+  font-weight: var(--font-medium);
+  color: var(--color-text-light);
+}
+
+/* Form Steps */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: block;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: var(--font-bold);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Form Navigation */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  gap: 1rem;
+}
+
+.btn-prev,
+.btn-next {
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-lg);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-next {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  color: white;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .eligibility-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .eligibility-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .eligibility-section {
+    padding: 4rem 0;
+  }
+  
+  .eligibility-form-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .form-navigation {
+    flex-direction: column;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

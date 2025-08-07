@@ -1,0 +1,228 @@
+/* ==========================================================================
+   #IMAGES
+   ========================================================================== */
+
+/**
+ * Base image styles
+ */
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic; /* For alt text styling */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/**
+ * Lazy loading styles
+ */
+.lazyload,
+.lazyloading {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lazyloaded {
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Image loading animation */
+.img-loading {
+    position: relative;
+    background-color: var(--color-gray-100);
+    overflow: hidden;
+}
+
+.img-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    z-index: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Image loaded state */
+.img-loaded {
+    opacity: 1;
+}
+
+/* Image error state */
+.img-error {
+    position: relative;
+    background-color: var(--color-gray-100);
+    min-height: 100px;
+}
+
+.img-error::before {
+    content: '⚠️';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    opacity: 0.5;
+}
+
+/**
+ * Responsive images
+ */
+.responsive-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio by default */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-gray-100);
+}
+
+.responsive-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Aspect Ratio Modifiers */
+.responsive-image--1-1 {
+    padding-bottom: 100%;
+}
+
+.responsive-image--4-3 {
+    padding-bottom: 75%;
+}
+
+.responsive-image--3-2 {
+    padding-bottom: 66.66%;
+}
+
+.responsive-image--16-9 {
+    padding-bottom: 56.25%;
+}
+
+.responsive-image--21-9 {
+    padding-bottom: 42.85%;
+}
+
+/**
+ * Image effects
+ */
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.05);
+}
+
+/* Grayscale effect */
+.img-grayscale {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.img-grayscale:hover {
+    filter: grayscale(0%);
+}
+
+/* Rounded corners */
+.img-rounded {
+    border-radius: var(--border-radius);
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+/* Image overlays */
+.img-overlay {
+    position: relative;
+    display: inline-block;
+}
+
+.img-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.img-overlay:hover::before {
+    opacity: 1;
+}
+
+/* Dark mode styles */
+.dark-mode .img-loading {
+    background-color: var(--color-gray-900);
+}
+
+.dark-mode .img-error {
+    background-color: var(--color-gray-900);
+}
+
+/* Print styles */
+@media print {
+    .img-loading,
+    .lazyload {
+        opacity: 1 !important;
+        background: none !important;
+    }
+    
+    .img-loading::after {
+        display: none;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    img,
+    .lazyload,
+    .lazyloading,
+    .lazyloaded,
+    .img-loading,
+    .img-loaded {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .img-loading::after {
+        animation: none !important;
+        display: none;
+    }
+}

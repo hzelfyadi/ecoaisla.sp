@@ -1,0 +1,241 @@
+/* ==========================================================================
+   #FORM VALIDATION
+   ========================================================================== */
+
+/**
+ * Form validation styles for error states and user feedback
+ */
+
+/* Form group container */
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Label styles */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-medium);
+  color: var(--text-color);
+}
+
+/* Required field indicator */
+.required-indicator {
+  color: var(--error-color);
+  margin-left: 0.25rem;
+}
+
+/* Form control base styles */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  background-clip: padding-box;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Form control focus state */
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
+}
+
+/* Error state for form controls */
+.form-control.error {
+  border-color: var(--error-color);
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Success state for form controls */
+.form-control.success {
+  border-color: var(--success-color);
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Error message styles */
+.error-message {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--error-color);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Form feedback icons */
+.form-feedback {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  display: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  pointer-events: none;
+}
+
+/* Show feedback icon when validation state is set */
+.form-group.success .form-feedback.success,
+.form-group.error .form-feedback.error {
+  display: block;
+}
+
+/* Checkbox and radio validation states */
+.form-check-input.error {
+  border-color: var(--error-color);
+}
+
+.form-check-input.success {
+  border-color: var(--success-color);
+}
+
+/* Form validation summary */
+.validation-summary {
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-color);
+}
+
+.validation-summary.error {
+  border-left: 4px solid var(--error-color);
+  background-color: rgba(var(--error-rgb), 0.05);
+}
+
+.validation-summary.success {
+  border-left: 4px solid var(--success-color);
+  background-color: rgba(var(--success-rgb), 0.05);
+}
+
+.validation-summary h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.validation-summary ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.validation-summary li {
+  margin-bottom: 0.25rem;
+}
+
+/* Dark mode styles */
+.dark-mode .form-control {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+  color: var(--text-light);
+}
+
+.dark-mode .form-control:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.5);
+}
+
+.dark-mode .form-label {
+  color: var(--text-light);
+}
+
+/* Form group with floating labels */
+.form-group.floating {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.form-group.floating .form-control {
+  height: calc(3.5rem + 2px);
+  padding: 1.5rem 1rem 0.5rem;
+  line-height: 1.25;
+}
+
+.form-group.floating label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  margin-bottom: 0;
+  color: var(--text-muted);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+
+.form-group.floating .form-control:focus ~ label,
+.form-group.floating .form-control:not(:placeholder-shown) ~ label {
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  color: var(--primary-color);
+}
+
+/* Form group with icons */
+.form-group.with-icon {
+  position: relative;
+}
+
+.form-group.with-icon .form-control {
+  padding-left: 2.5rem;
+}
+
+.form-group.with-icon .icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-control {
+    padding: 0.625rem 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .form-group.floating .form-control {
+    height: 3.25rem;
+    padding: 1.25rem 0.75rem 0.375rem;
+  }
+  
+  .form-group.floating label {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .form-control {
+    background-color: transparent !important;
+    border: 1px solid #000 !important;
+    color: #000 !important;
+    box-shadow: none !important;
+  }
+  
+  .error-message,
+  .form-feedback {
+    display: none !important;
+  }
+}

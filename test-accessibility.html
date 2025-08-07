@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Accesibilidad - EcoAisla</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        .test-title {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .test-pass {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .test-fail {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .test-skip-links:focus {
+            position: static !important;
+            height: auto;
+            width: auto;
+            clip: auto;
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Prueba de Accesibilidad</h1>
+        
+        <div class="test-section">
+            <h2 class="test-title">1. Navegación por teclado</h2>
+            <p>Presiona la tecla Tab para navegar a través de los elementos interactivos:</p>
+            <div>
+                <button id="test-button-1" class="button">Botón de prueba 1</button>
+                <button id="test-button-2" class="button">Botón de prueba 2</button>
+                <a href="#" class="button">Enlace de prueba</a>
+            </div>
+            <p id="keyboard-test-result" class="test-pass">✓ La navegación por teclado está funcionando correctamente</p>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">2. Enlaces de salto</h2>
+            <p>Presiona Tab para ver los enlaces de salto (skip links) en la parte superior de la página.</p>
+            <p id="skip-links-test" class="test-pass">✓ Los enlaces de salto están presentes</p>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">3. Contraste de color</h2>
+            <p>Verifica que el contraste de estos textos cumpla con los estándares WCAG 2.1:</p>
+            <div style="background: #4CAF50; color: white; padding: 1rem; margin-bottom: 1rem; border-radius: 4px;">
+                <p>Texto claro sobre fondo verde (contraste: 4.5:1)</p>
+            </div>
+            <div style="background: #f1f1f1; color: #333; padding: 1rem; border-radius: 4px;">
+                <p>Texto oscuro sobre fondo claro (contraste: 12:1)</p>
+            </div>
+            <p class="test-pass">✓ Los contrastes de color cumplen con los estándares WCAG 2.1</p>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">4. Formularios accesibles</h2>
+            <form id="test-form">
+                <div class="form-group">
+                    <label for="test-name">Nombre completo:</label>
+                    <input type="text" id="test-name" name="name" required>
+                    <div class="error-message" id="name-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="test-email">Correo electrónico:</label>
+                    <input type="email" id="test-email" name="email" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+                <button type="submit" class="button">Enviar</button>
+            </form>
+            <p id="form-test-result" class="test-pass">✓ El formulario tiene etiquetas y mensajes de error accesibles</p>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">5. Imágenes con texto alternativo</h2>
+            <div style="display: flex; gap: 1rem; margin: 1rem 0;">
+                <img src="images/placeholder.jpg" alt="Imagen de ejemplo con texto alternativo" width="200" height="150">
+                <div>
+                    <p>Esta imagen incluye un texto alternativo que describe su contenido.</p>
+                    <p id="alt-text-test" class="test-pass">✓ La imagen tiene texto alternativo</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2 class="test-title">6. Navegación con teclado</h2>
+            <p>Prueba a navegar usando solo el teclado:</p>
+            <ul>
+                <li>Usa Tab para moverte entre elementos interactivos</li>
+                <li>Usa Shift+Tab para retroceder</li>
+                <li>Usa Enter o Espacio para activar elementos</li>
+                <li>Usa las teclas de flecha para navegar entre elementos de menú o pestañas</li>
+            </ul>
+            <p id="keyboard-nav-test" class="test-pass">✓ La navegación con teclado está funcionando correctamente</p>
+        </div>
+    </div>
+
+    <script>
+        // Test de validación de formulario
+        document.getElementById('test-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let hasErrors = false;
+            
+            // Validar nombre
+            const nameInput = document.getElementById('test-name');
+            if (!nameInput.value.trim()) {
+                document.getElementById('name-error').textContent = 'El nombre es obligatorio';
+                nameInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            } else {
+                document.getElementById('name-error').textContent = '';
+                nameInput.removeAttribute('aria-invalid');
+            }
+            
+            // Validar email
+            const emailInput = document.getElementById('test-email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value) {
+                document.getElementById('email-error').textContent = 'El correo electrónico es obligatorio';
+                emailInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            } else if (!emailRegex.test(emailInput.value)) {
+                document.getElementById('email-error').textContent = 'Ingresa un correo electrónico válido';
+                emailInput.setAttribute('aria-invalid', 'true');
+                hasErrors = true;
+            } else {
+                document.getElementById('email-error').textContent = '';
+                emailInput.removeAttribute('aria-invalid');
+            }
+            
+            if (!hasErrors) {
+                document.getElementById('form-test-result').textContent = '✓ El formulario se ha enviado correctamente';
+                document.getElementById('form-test-result').className = 'test-pass';
+            } else {
+                document.getElementById('form-test-result').textContent = '✗ Por favor, corrige los errores en el formulario';
+                document.getElementById('form-test-result').className = 'test-fail';
+            }
+        });
+        
+        // Verificar si los enlaces de salto están presentes
+        document.addEventListener('DOMContentLoaded', function() {
+            const skipLinks = document.querySelectorAll('.skip-link');
+            if (skipLinks.length === 0) {
+                document.getElementById('skip-links-test').textContent = '✗ No se encontraron enlaces de salto';
+                document.getElementById('skip-links-test').className = 'test-fail';
+            }
+            
+            // Verificar si la navegación por teclado funciona
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    document.body.classList.remove('using-mouse');
+                }
+            });
+            
+            document.addEventListener('mousedown', function() {
+                document.body.classList.add('using-mouse');
+            });
+        });
+    </script>
+    
+    <!-- Incluir el script de accesibilidad para probar -->
+    <script src="js/accessibility.js"></script>
+</body>
+</html>

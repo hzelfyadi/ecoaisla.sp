@@ -1,0 +1,46 @@
+{
+  "name": "ecoaisla-website",
+  "version": "1.0.0",
+  "description": "Ecoaisla - Aislamiento Térmico por 1€",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "build": "node build.js",
+    "optimize-images": "node build/optimize-images.js",
+    "optimize-css": "node build/optimize-css.js",
+    "optimize-js": "node build/optimize-js.js",
+    "build:images": "npm run optimize-images && npm run build",
+    "build:css": "npm run optimize-css && npm run build",
+    "build:js": "npm run optimize-js && npm run build",
+    "build:all": "npm run optimize-images && npm run optimize-css && npm run optimize-js && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aislamiento",
+    "energía",
+    "eficiencia energética",
+    "reforma",
+    "hogar"
+  ],
+  "author": "Ecoaisla",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^5.0.0",
+    "clean-css": "^5.3.2",
+    "critical": "^5.1.0",
+    "imagemin": "^8.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^7.0.0",
+    "live-server": "^1.2.2",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "sharp": "^0.32.1",
+    "terser": "^5.16.1"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
+}
